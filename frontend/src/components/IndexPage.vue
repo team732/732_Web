@@ -1,28 +1,34 @@
 <template>
-  <div class="movies">
-    <h1>영화 목록</h1>
-    <div v-for="movie in movies" class="movie">
-      <img v-bind:src="movie.poster" class="poster">
-      <div>
-        <strong>{{movie.name}}</strong>, <i>{{movie.director}}</i> [{{movie.year}}]
-        <router-link :to="{ name: 'show', params: { id: movie.id }}">더보기</router-link>
+  <div>
+      <h1>영화 목록</h1>
+      <div class="row">
+        <div v-for="mission in missions" class="col-sm-2">
+          <b-card :img="mission.mission.picture"
+                  :title="mission.mission.text"
+                  class=""
+          >
+          {{mission.missionDate}}
+            <router-link :to="{ name: 'show', params: { id: mission.mission }}">더보기</router-link>
+
+          </b-card>
+        </div>
       </div>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
   created () {
-    this.$http.get('/api/movies')
+    this.$http.get(`/front/missions`)
     .then((response) => {
-      this.movies = response.data
+      console.log(response)
+      this.missions = response.data.data.missions
     })
   },
   name: 'hello',
   data () {
     return {
-      movies: []
+      missions: []
     }
   }
 }
@@ -40,4 +46,5 @@ export default {
   padding: 10px;
   text-align: center;
 }
+
 </style>

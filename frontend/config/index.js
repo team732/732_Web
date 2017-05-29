@@ -28,11 +28,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api': {
-        target: 'http://localhost:3000/api',
+      '/front': {
+        target: 'http://52.79.178.255/admin/front/',
         changeOrigin: true,
         pathRewrite: {
-          '^/api': ''
+          '^/front': ''
         }
       }
     },
