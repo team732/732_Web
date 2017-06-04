@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div id="app">
     <router-view></router-view>
   </div>
@@ -22,3 +22,7 @@ export default {
   box-sizing: border-box;
 }
 </style>
+ -->
+ <template>
+  <router-view></router-view>
+</template>

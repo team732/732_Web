@@ -3,20 +3,33 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import Index from 'components/IndexPage'
-import Show from 'components/ShowPage'
+// Container
+import Full from 'container/Full'
+
+// Views
+import Index from 'views/IndexPage'
+import Show from 'views/ShowPage'
+
 export default new Router({
   mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: Index
-    },
-    {
-      path: '/:id',
-      name: 'show',
-      component: Show
+      redirect: '/home',
+      name: 'Home',
+      component: Full,
+      children: [
+        {
+          path: '/home',
+          name: 'index',
+          component: Index
+        },
+        {
+          path: '/showDetail/:id',
+          name: 'show',
+          component: Show
+        }
+      ]
     }
   ]
 })
